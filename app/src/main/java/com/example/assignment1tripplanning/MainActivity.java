@@ -67,21 +67,16 @@ public class MainActivity extends AppCompatActivity {
         String json = prefs.getString(KEY_PLACES, "[]");
         Type type = new TypeToken<ArrayList<Place>>(){}.getType();
         placeList = gson.fromJson(json, type);
-
-        if (placeList == null)
-            placeList = new ArrayList<>();
+        if (placeList == null) placeList = new ArrayList<>();
     }
 
     private void filterPlaces(String text) {
         ArrayList<Place> filtered = new ArrayList<>();
-
         for (Place p : placeList) {
             if (p.getFrom().toLowerCase().contains(text.toLowerCase()) ||
-                    p.getTo().toLowerCase().contains(text.toLowerCase())) {
+                    p.getTo().toLowerCase().contains(text.toLowerCase()))
                 filtered.add(p);
-            }
         }
-
         adapter = new PlaceAdapter(filtered);
         recyclerPlaces.setAdapter(adapter);
     }

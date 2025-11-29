@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imgCategory"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:scaleType="centerCrop"
+            android:layout_marginBottom="20dp" />
+
+        <TextView
+            android:id="@+id/tvFromTo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ramallah → Jericho"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp" />
+
+        <TextView
+            android:id="@+id/tvCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Category: Beach"
+            android:textSize="18sp"
+            android:layout_marginBottom="6dp" />
+
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date: 2025-1-5"
+            android:textSize="18sp"
+            android:layout_marginBottom="6dp" />
+
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Time: 14:00"
+            android:textSize="18sp"
+            android:layout_marginBottom="6dp" />
+
+        <TextView
+            android:id="@+id/tvImportant"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Important ✓"
+            android:textSize="18sp"
+            android:textColor="#2E7D32"
+            android:layout_marginBottom="20dp" />
+
+        <Button
+            android:id="@+id/btnEdit"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Edit Trip"
+            android:textColor="#FFF"
+            android:backgroundTint="#2E7D32"
+            android:layout_marginBottom="12dp" />
+
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Delete Trip"
+            android:textColor="#FFF"
+            android:backgroundTint="#D90429" />
+
+    </LinearLayout>
+
+</ScrollView>

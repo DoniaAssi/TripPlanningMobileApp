@@ -34,7 +34,7 @@ public class EditPlaceActivity extends AppCompatActivity {
     private static final String KEY_PLACES = "places_list";
 
     private ArrayList<Place> placeList = new ArrayList<>();
-    private int position;
+    private int index;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,10 +58,13 @@ public class EditPlaceActivity extends AppCompatActivity {
         spinnerFrom.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, cities));
         spinnerTo.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, cities));
 
-        position = getIntent().getIntExtra("position", -1);
-        if (position == -1) { finish(); return; }
+        index = getIntent().getIntExtra("index", -1);
+        if (index == -1) {
+            finish();
+            return;
+        }
 
-        Place p = placeList.get(position);
+        Place p = placeList.get(index);
 
         spinnerFrom.setSelection(getIndex(spinnerFrom, p.getFrom()));
         spinnerTo.setSelection(getIndex(spinnerTo, p.getTo()));
@@ -69,7 +72,11 @@ public class EditPlaceActivity extends AppCompatActivity {
         selectRadio(p.getCategory());
 
         String[] dp = p.getDate().split("-");
-        datePicker.updateDate(Integer.parseInt(dp[0]), Integer.parseInt(dp[1]) - 1, Integer.parseInt(dp[2]));
+        datePicker.updateDate(
+                Integer.parseInt(dp[0]),
+                Integer.parseInt(dp[1]) - 1,
+                Integer.parseInt(dp[2])
+        );
 
         String[] tp = p.getTime().split(":");
         timePicker.setHour(Integer.parseInt(tp[0]));
@@ -81,30 +88,23 @@ public class EditPlaceActivity extends AppCompatActivity {
         btnDelete.setOnClickListener(v -> deletePlace());
     }
 
-    private void selectRadio(String category) {
-        if (category.equals("Beach")) {
-            ((RadioButton) findViewById(R.id.radioBeach)).setChecked(true);
-        } else if (category.equals("City Tour")) {
-            ((RadioButton) findViewById(R.id.radioCityTour)).setChecked(true);
-        } else if (category.equals("Adventure")) {
-            ((RadioButton) findViewById(R.id.radioAdventure)).setChecked(true);
-        } else {
-            ((RadioButton) findViewById(R.id.radioHistorical)).setChecked(true);
-        }
+    private void selectRadio(String c) {
+        if (c.equals("Beach")) ((RadioButton) findViewById(R.id.radioBeach)).setChecked(true);
+        else if (c.equals("City Tour")) ((RadioButton) findViewById(R.id.radioCityTour)).setChecked(true);
+        else if (c.equals("Adventure")) ((RadioButton) findViewById(R.id.radioAdventure)).setChecked(true);
+        else ((RadioButton) findViewById(R.id.radioHistorical)).setChecked(true);
     }
 
-    private int getIndex(Spinner s, String value) {
+    private int getIndex(Spinner s, String val) {
         for (int i = 0; i < s.getCount(); i++)
-            if (s.getItemAtPosition(i).toString().equals(value))
-                return i;
+            if (s.getItemAtPosition(i).toString().equals(val)) return i;
         return 0;
     }
 
     private void loadPlaces() {
         String json = prefs.getString(KEY_PLACES, "[]");
-        Type type = new TypeToken<ArrayList<Place>>(){}.getType();
-        placeList = new Gson().fromJson(json, type);
-
+        Type t = new TypeToken<ArrayList<Place>>() {}.getType();
+        placeList = new Gson().fromJson(json, t);
         if (placeList == null) placeList = new ArrayList<>();
     }
 
@@ -113,17 +113,16 @@ public class EditPlaceActivity extends AppCompatActivity {
     }
 
     private void updatePlace() {
+        int id = radioGroupCategory.getCheckedRadioButtonId();
+        RadioButton rb = findViewById(id);
 
-        int radioId = radioGroupCategory.getCheckedRadioButtonId();
-        RadioButton selected = findViewById(radioId);
-
-        placeList.set(position,
+        placeList.set(index,
                 new Place(
                         spinnerFrom.getSelectedItem().toString(),
                         spinnerTo.getSelectedItem().toString(),
                         datePicker.getYear() + "-" + (datePicker.getMonth() + 1) + "-" + datePicker.getDayOfMonth(),
                         timePicker.getHour() + ":" + timePicker.getMinute(),
-                        selected.getText().toString(),
+                        rb.getText().toString(),
                         checkImportant.isChecked()
                 )
         );
@@ -134,7 +133,7 @@ public class EditPlaceActivity extends AppCompatActivity {
     }
 
     private void deletePlace() {
-        placeList.remove(position);
+        placeList.remove(index);
         savePlaces();
         Toast.makeText(this, "Deleted!", Toast.LENGTH_SHORT).show();
         finish();

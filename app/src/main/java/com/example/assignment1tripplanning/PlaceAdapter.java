@@ -52,8 +52,14 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceViewHol
         }
 
         holder.itemView.setOnClickListener(v -> {
-            Intent i = new Intent(v.getContext(), EditPlaceActivity.class);
-            i.putExtra("position", position);
+            Intent i = new Intent(v.getContext(), ViewPlaceActivity.class);
+            i.putExtra("from", p.getFrom());
+            i.putExtra("to", p.getTo());
+            i.putExtra("date", p.getDate());
+            i.putExtra("time", p.getTime());
+            i.putExtra("category", p.getCategory());
+            i.putExtra("important", p.isImportant());
+            i.putExtra("index", position);
             v.getContext().startActivity(i);
         });
     }
@@ -70,7 +76,6 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceViewHol
 
         public PlaceViewHolder(@NonNull View itemView) {
             super(itemView);
-
             imgCategory = itemView.findViewById(R.id.imgCategory);
             tvFromTo = itemView.findViewById(R.id.tvFromTo);
             tvCategory = itemView.findViewById(R.id.tvCategory);

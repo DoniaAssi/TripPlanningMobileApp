@@ -19,7 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
+        <activity android:name=".ViewPlaceActivity" />
         <activity android:name=".EditPlaceActivity" />
         <activity android:name=".AddPlaceActivity" />
         <activity android:name=".MainActivity" />
