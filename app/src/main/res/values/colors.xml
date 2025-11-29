@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+
+
+    <color name="mint_background">#F4FBF7</color>
+
+
+    <color name="mint_primary">#4CAF8F</color>
+
+    <color name="mint_primary_dark">#3E8C75</color>
+
+    <color name="pure_white">#FFFFFFFF</color>
+
+    <color name="text_dark">#333333</color>
+
+    <color name="important_green">#2E7D32</color>
+    >
+    <color name="not_important_red">#D90429</color>
+    <color name="main_green">#43A047</color>
+    <color name="light_green">#A5D6A7</color>
+
+
 </resources>

@@ -1,9 +1,14 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.Assignment1tripplanning" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.AssignmentTripPlanning" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/main_green</item>
+        <item name="colorPrimaryContainer">@color/light_green</item>
+
+        <item name="colorSecondary">@color/light_green</item>
+        <item name="colorSecondaryContainer">@color/light_green</item>
+
+        <item name="android:colorButtonNormal">@color/main_green</item>
     </style>
 
-    <style name="Theme.Assignment1tripplanning" parent="Base.Theme.Assignment1tripplanning" />
 </resources>

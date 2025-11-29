@@ -14,16 +14,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="From"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="4dp"/>
+
             <Spinner
                 android:id="@+id/spinnerFrom"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="To"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="4dp"/>
+
             <Spinner
                 android:id="@+id/spinnerTo"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp" />
+                android:layout_height="wrap_content" />
 
             <RadioGroup
                 android:id="@+id/radioGroupCategory"
@@ -92,22 +108,22 @@
         <Button
             android:id="@+id/btnUpdate"
             android:text="Update Trip"
-            android:background="#3A86FF"
             android:textColor="#FFF"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:layout_marginEnd="8dp" />
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="#2E7D32" />
 
         <Button
             android:id="@+id/btnDelete"
             android:text="Delete Trip"
-            android:background="#D90429"
             android:textColor="#FFF"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:layout_marginStart="8dp" />
+            android:layout_marginStart="8dp"
+            android:backgroundTint="#D90429" />
 
     </LinearLayout>
 
